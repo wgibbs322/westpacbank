@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westpac Bank Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #d32f2f; /* Red color */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #c2185b; /* Slightly darker red */
+        }
+        .header img {
+            width: 120px;
+        }
+        .header h2 {
+            color: white;
+            font-size: 24px;
+            margin: 0;
+        }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        .header-nav a:hover {
+            color: #e3e3e3;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header img {
+            width: 100px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .login-form input[type="submit"] {
+            padding: 12px;
+            background-color: #d32f2f; /* Red color */
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .login-form input[type="submit"]:hover {
+            background-color: #c2185b; /* Slightly darker red */
+        }
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .login-options a {
+            color: #d32f2f; /* Red color */
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .login-options a:hover {
+            text-decoration: underline;
+        }
+        .login-help {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .login-help a {
+            color: #d32f2f; /* Red color */
+            text-decoration: none;
+        }
+        .login-help a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            margin-top: auto;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            padding: 20px;
+        }
+        .footer a {
+            color: #d32f2f; /* Red color */
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+                text-align: center;
+            }
+            .header h2 {
+                font-size: 22px;
+                margin: 0;
+            }
+            .header-nav {
+                margin-top: 10px;
+            }
+            .header-nav a {
+                font-size: 16px;
+                margin: 0 5px;
+            }
+            .login-container {
+                width: 90%;
+                margin-top: 30px;
+            }
+            .login-form input[type="text"],
+            .login-form input[type="password"] {
+                font-size: 14px;
+            }
+            .login-form input[type="submit"] {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 10px;
+            }
+            .header h2 {
+                font-size: 20px;
+            }
+            .header-nav a {
+                font-size: 14px;
+                margin: 0 3px;
+            }
+            .login-container {
+                width: 100%;
+                padding: 20px;
+            }
+            .login-form input[type="text"],
+            .login-form input[type="password"] {
+                font-size: 14px;
+            }
+            .login-form input[type="submit"] {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h2>Westpac Bank</h2>
+        <nav class="header-nav">
+            <a href="#">Customer Service</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+    
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Westpac Bank</h2>
+        </div>
+        <form class="login-form" id="loginForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <input type="submit" value="Sign In">
+        </form>
+        <div class="login-help">
+            <a href="">Learn more about Online Banking</a>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>
+            <a href="#">Privacy</a> | 
+            <a href="#">Security</a> | 
+            <a href="#">Terms of Use</a> | 
+            <a href="#">Accessibility</a> | 
+            <a href="#">About Westpac Bank</a>
+        </p>
+        <p>&copy; 2025 Westpac Bank</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            console.log('Submitting login form with:', { username, password });
+    
+            fetch('http://localhost:4000/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response data:', data);
+                
+                if (data.token) {
+                    // Show a SweetAlert2 success message
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Successful',
+                        text: 'Redirecting to the homepage...',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = 'Home.html';
+                    });
+                } else {
+                    let errorMessage = 'Invalid login. Please check your username and password.';
+                    if (data.error === 'Invalid username') {
+                        errorMessage = 'Username is incorrect.';
+                    } else if (data.error === 'Invalid password') {
+                        errorMessage = 'Password is incorrect.';
+                    }
+                    // Show a SweetAlert2 error message
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Failed',
+                        text: errorMessage
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Show a SweetAlert2 error message for unexpected errors
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred while trying to log in.'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westpac Bank - transaction-history</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: #d30000; /* Red background */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header img {
+            width: 120px;
+            max-width: 100%;
+        }
+        .header-nav {
+            display: flex;
+            gap: 15px;
+        }
+        .header-nav a {
+            color: white; /* White text */
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .header-nav a:hover {
+            color: #f4f4f4;
+            text-decoration: underline;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            flex-grow: 1; /* Make this container take up the remaining space */
+            flex-direction: row;
+            gap: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #d30000; /* Red color for links */
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .sidebar a:hover {
+            background-color: #e0e0e0;
+        }
+        .content {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .content h2 {
+            color: #d30000; /* Red color for headings */
+            margin-bottom: 20px;
+        }
+        .balance {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .balance h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .balance p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d30000; /* Red color for balance text */
+            margin: 0;
+        }
+        .transaction-history {
+            margin-bottom: 20px;
+        }
+        .transaction-history table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .transaction-history th, .transaction-history td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        .transaction-history th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .account-settings {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+        .footer a {
+            color: #d30000; /* Red color for footer links */
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .header-nav a {
+                font-size: 16px;
+                padding: 8px 0;
+            }
+            .container {
+                margin: 10px;
+            }
+            .sidebar {
+                width: 100%;
+            }
+            .content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
+            .header img {
+                width: 100px;
+            }
+            .header-nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .header-nav a {
+                font-size: 14px;
+                padding: 6px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h3>Westpac Bank</h3>
+        <nav class="header-nav">
+            <a href="Home.html">Account Overview</a>
+            <a href="transactionhistory.html">Transaction History</a>
+            <a href="Accountsettings.html">Account Settings</a>
+            <a href="billpay.html">Bill Pay</a>
+            <a href="transfer.html">Transfer Money</a>
+            <a href="statement.html">Statements & Documents</a>
+            <a href="Customerservice.html">Customer Service</a>
+            <a href="Signin.html">Sign Out</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <a href="Home.html">Account Overview</a>
+            <a href="transactionhistory.html">Transaction History</a>
+            <a href="Accountsettings.html">Account Settings</a>
+            <a href="billpay.html">Bill Pay</a>
+            <a href="transfer.html">Transfer Money</a>
+            <a href="statement.html">Statements & Documents</a>
+        </aside>
+        
+        <main class="content">
+            <section class="transaction-history">
+                <h2>Posted Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/10/2024</td>
+                            <td>Direct Deposit</td>
+                            <td>+RM150,000.00</td>
+                            <td>RM900,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/14/2024</td>
+                            <td>Payment to Credit Card</td>
+                            <td>−RM500.00</td>
+                            <td>RM15,200.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/10/2024</td>
+                            <td>Direct Deposit</td>
+                            <td>+RM250,000.00</td>
+                            <td>RM250,700.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/08/2024</td>
+                            <td>Grocery Store Purchase</td>
+                            <td>−RM150.00</td>
+                            <td>RM13,700.00</td>
+                        </tr>
+                        <tr>
+                            <td>06/15/2023</td>
+                            <td>Online Purchase</td>
+                            <td>−RM120.00</td>
+                            <td>RM13,850.00</td>
+                        </tr>
+                        <tr>
+                            <td>05/23/2022</td>
+                            <td>Car Loan Payment</td>
+                            <td>−RM350.00</td>
+                            <td>RM14,050.00</td>
+                        </tr>
+                        <tr>
+                            <td>04/05/2022</td>
+                            <td>Salary</td>
+                            <td>+RM4,000.00</td>
+                            <td>RM14,400.00</td>
+                        </tr>
+                        <tr>
+                            <td>11/18/2021</td>
+                            <td>Bill Payment</td>
+                            <td>−RM200.00</td>
+                            <td>RM10,400.00</td>
+                        </tr>
+                        <tr>
+                            <td>10/10/2021</td>
+                            <td>Grocery Store Purchase</td>
+                            <td>−RM180.00</td>
+                            <td>RM10,600.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/01/2021</td>
+                            <td>Bonus Deposit</td>
+                            <td>+RM10,000.00</td>
+                            <td>RM10,780.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; 2024 Westpac Bank. All rights reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

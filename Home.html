@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westpac Bank- Account Overview</title>
+    <style>
+        /* (Your existing CSS) */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+        .header {
+            background-color: #d92d2a; /* Changed from #870000 to #d92d2a */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+        .header img {
+            width: 120px;
+        }
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .header-nav a:hover {
+            color: #ffcc00;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            flex: 1;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #d92d2a; /* Changed from #870000 to #d92d2a */
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .sidebar a:hover {
+            background-color: #e0e0e0;
+        }
+        .content {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .content h2 {
+            color: #d92d2a; /* Changed from #870000 to #d92d2a */
+            margin-bottom: 20px;
+        }
+        .balance {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #ffe6e6;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .balance h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .balance p {
+            font-size: 24px;
+            font-weight: bold;
+            color: #cf0000; /* Changed from #0073cf to #cf0000 */
+            margin: 0;
+        }
+        .transaction-history {
+            margin-bottom: 20px;
+        }
+        .transaction-history table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .transaction-history th, .transaction-history td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        .transaction-history th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        .account-settings {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            margin-top: auto;
+        }
+        .footer a {
+            color: #cf0000; /* Changed from #0073cf to #cf0000 */
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .balance-small {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            background-color: #ffe6e6;
+            border-radius: 6px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .balance-small h3 {
+            font-size: 16px;
+            color: #d92d2a; /* Changed from #870000 to #d92d2a */
+            margin: 0;
+            margin-bottom: 5px;
+        }
+
+        .balance-small .balance-amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #cf0000; /* Changed from #0073cf to #cf0000 */
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                text-align: center;
+            }
+            .header-nav {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 10px;
+            }
+            .header-nav a {
+                margin: 5px 0;
+            }
+            .container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+            }
+            .balance, .balance-small {
+                flex-direction: column;
+                align-items: center;
+            }
+            .balance-small {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 15px;
+            }
+            .header h2 {
+                font-size: 20px;
+            }
+            .header-nav a {
+                font-size: 12px;
+            }
+            .container {
+                padding: 5px;
+            }
+            .content {
+                padding: 10px;
+            }
+            .balance h3 {
+                font-size: 18px;
+            }
+            .balance p {
+                font-size: 20px;
+            }
+            .balance-small h3 {
+                font-size: 14px;
+            }
+            .balance-small .balance-amount {
+                font-size: 18px;
+            }
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <header class="header">
+        <h2>Westpac Bank</h2>
+        <nav class="header-nav">
+            <a href="Home.html">Account Overview</a>
+            <a href="transactionhistory.html">Transaction History</a>
+            <a href="Accountsettings.html">Account Settings</a>
+            <a href="billpay.html">Bill Pay</a>
+            <a href="transfer.html">Transfer Money</a>
+            <a href="statement.html">Statements & Documents</a>
+            <a href="Customerservice.html">Customer Service</a>
+            <a href="Signin.html">Sign Out</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <a href="Home.html">Account Overview</a>
+            <a href="transactionhistory.html">Transaction History</a>
+            <a href="Accountsettings.html">Account Settings</a>
+            <a href="billpay.html">Bill Pay</a>
+            <a href="transfer.html">Transfer Money</a>
+            <a href="statement.html">Statements & Documents</a>
+        </aside>
+        
+        <main class="content">
+            <section class="balance">
+                <h3>Available Balance</h3>
+                <p id="balance-amount">AUD990,000.00</p>
+            </section>
+            <section class="balance-small">
+                <h3>Checkings****4567</h3>
+                <p class="balance-amount">AUD490,000.00</p>
+            </section>
+            <section class="balance-small">
+                <h3>Savings****1334</h3>
+                <p class="balance-amount">AUD490,000.00</p>
+            </section>
+            <section class="balance-small">
+                <h3>Creditcard****5678</h3>
+                <p class="balance-amount">AUD10,000.00</p>
+            </section>
+            
+            <section class="transfer-form" style="padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-top: 20px;">
+                <h2>Transfer Money</h2>
+                <form id="transfer-form" onsubmit="handleTransfer(event)">
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label for="from-account" style="font-weight: bold; margin-bottom: 5px; display: block;">From Account:</label>
+                            <select class="form-select" id="from-account" aria-label="From bank account" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                <option selected value="4567">Checking Account (****4567)</option>
+                                <option value="1234">Savings Account (****1234)</option>
+                                <option value="5678">Credit Card (****5678)</option>
+                            </select>
+                        </div>
+                        <div style="flex: 1;">
+                            <label for="transfer-amount" style="font-weight: bold; margin-bottom: 5px; display: block;">Amount:</label>
+                            <input type="number" id="transfer-amount" name="amount" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label for="recipient-name" style="font-weight: bold; margin-bottom: 5px; display: block;">Recipient Name:</label>
+                            <input type="text" id="recipient-name" name="recipient-name" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label for="recipient-account" style="font-weight: bold; margin-bottom: 5px; display: block;">Recipient Account Number:</label>
+                            <input type="text" id="recipient-account" name="recipient-account" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div style="flex: 1;">
+                            <label for="bSB-Number" style="font-weight: bold; margin-bottom: 5px; display: block;">BSB Number:</label>
+                            <input type="text" id="bSB-Number" name="bSB-Number" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label for="bank-name" style="font-weight: bold; margin-bottom: 5px; display: block;">Bank Name:</label>
+                            <input type="text" id="bank-name" name="bank-name" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                    </div>
+                    <label for="recipient-email" style="font-weight: bold; margin-bottom: 5px; display: block;">Recipient Email:</label>
+                    <input type="email" id="recipient-email" name="recipient-email" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                    
+                    <button type="submit" style="background-color: #d92d2a; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Transfer</button>
+                </form>
+            </section>
+            
+
+            <section class="transaction-history">
+                <h2>Recent Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01/10/2024</td>
+                            <td>Direct Deposit</td>
+                            <td>+AUD150,000.00</td>
+                            <td>AUD900,000.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/14/2024</td>
+                            <td>Payment to Credit Card</td>
+                            <td>−AUD500.00</td>
+                            <td>AUD15,200.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/10/2024</td>
+                            <td>Direct Deposit</td>
+                            <td>+AUD250,000.00</td>
+                            <td>AUD250,700.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/08/2024</td>
+                            <td>Grocery Store Purchase</td>
+                            <td>−AUD150.00</td>
+                            <td>AUD13,700.00</td>
+                        </tr>
+                        <tr>
+                            <td>06/15/2023</td>
+                            <td>Online Purchase</td>
+                            <td>−AUD120.00</td>
+                            <td>AUD13,850.00</td>
+                        </tr>
+                        <tr>
+                            <td>05/23/2022</td>
+                            <td>Car Loan Payment</td>
+                            <td>−AUD350.00</td>
+                            <td>AUD14,050.00</td>
+                        </tr>
+                        <tr>
+                            <td>04/05/2022</td>
+                            <td>Salary</td>
+                            <td>+AUD4,000.00</td>
+                            <td>AUD14,400.00</td>
+                        </tr>
+                        <tr>
+                            <td>11/18/2021</td>
+                            <td>Bill Payment</td>
+                            <td>−AUD200.00</td>
+                            <td>AUD10,400.00</td>
+                        </tr>
+                        <tr>
+                            <td>10/10/2021</td>
+                            <td>Grocery Store Purchase</td>
+                            <td>AUD180.00</td>
+                            <td>AUD10,600.00</td>
+                        </tr>
+                        <tr>
+                            <td>08/01/2021</td>
+                            <td>Bonus Deposit</td>
+                            <td>+AUD10,000.00</td>
+                            <td>AUD10,780.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    
+
+    <footer class="footer">
+        <p>&copy; 2025 Westpac Bank | <a href="privacy.html">Privacy</a> | <a href="terms.html">Terms</a></p>
+    </footer>
+    
+<script>
+
+    async function handleTransfer(event) {
+        event.preventDefault(); // Prevent form submission
+    
+        // Get form values
+        const amount = parseFloat(document.getElementById('transfer-amount').value).toFixed(2);
+        const recipientName = document.getElementById('recipient-name').value;
+        const recipientAccount = document.getElementById('recipient-account').value;
+        const BSBNumber = document.getElementById('bSB-Number').value;
+        const bankName = document.getElementById('bank-name').value;
+        const recipientEmail = document.getElementById('recipient-email').value;
+    
+        // Show SweetAlert with transfer details
+        Swal.fire({
+            title: 'Confirm Transfer',
+            html: `<p>Amount: $${amount}</p>
+                   <p>Recipient: ${recipientName}</p>
+                   <p>Account Number: ${recipientAccount}</p>
+                   <p>BSB Number: ${BSBNumber}</p>
+                   <p>Bank: ${bankName}</p>
+                   <p>Email: ${recipientEmail}</p>`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Transfer',
+            cancelButtonText: 'Cancel'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                // Send the transaction data to the backend
+    
+                try {
+                    const response = await fetch('http://localhost:4000/api/transactions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            description: `Transfer to ${recipientName}`,
+                            amount: -amount, // Amount is negative for withdrawals
+                            status: 'Processing',
+                        }),
+                    });
+                    const data = await response.json();
+    
+                    if (response.ok) {
+                        // Display success alert
+                        Swal.fire({
+                            title: 'Transfer Initiated',
+                            text: `Your transfer of $${amount} to ${recipientName} is being processed.`,
+                            icon: 'info'
+                        });
+    
+                        // Add the transaction to the transaction history with "Processing" status
+                        const transactionHistoryTable = document.querySelector('.transaction-history tbody');
+                        const currentDate = new Date().toLocaleDateString('en-US'); // Get current date
+    
+                        const newRow = document.createElement('tr');
+                        newRow.innerHTML = `
+                            <td>${currentDate}</td>
+                            <td>Transfer to ${recipientName}</td>
+                            <td>-$${amount}</td>
+                            <td>Processing</td>
+                        `;
+                        transactionHistoryTable.appendChild(newRow);
+    
+                        // Optionally, clear the form fields after successful transfer
+                        document.getElementById('transfer-form').reset();
+                    } else {
+                        throw new Error(data.message || 'Error initiating transfer');
+                    }
+                } catch (error) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: error.message,
+                        icon: 'error'
+                    });
+                }
+            }
+        });
+    }
+</script>
+
+    <script src="scriptaddtransact.js">
+
+    </script>
+    
+<script src="fetchdisplaytransaction.js"></script>
+
+   
+</body>
+
+</html>

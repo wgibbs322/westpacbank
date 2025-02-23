@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - Westpac Bank</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #ff0000; /* Changed to red */
+            padding: 10px 30px; /* Slightly larger padding for a more spacious feel */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            position: sticky;
+            top: 0; /* Make the header sticky so it stays at the top */
+            z-index: 1000; /* Ensure the header stays on top of other content */
+        }
+
+        /* Logo */
+        .header-logo img {
+            max-height: 50px; /* Make sure logo height is consistent */
+        }
+
+        /* Navigation Styles */
+        .header-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px; /* Increased margin for better spacing */
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and hover effects */
+        }
+
+        .header-nav a:hover {
+            color: #ffcccc; /* Light red color on hover */
+            transform: translateY(-2px); /* Slightly lift the link on hover for a dynamic effect */
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 767px) {
+            .header-nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+
+            .header-nav a {
+                margin: 8px 0;
+                font-size: 18px; /* Slightly larger text for readability on small devices */
+            }
+        }
+
+        /* Main content area */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .settings-container {
+            background-color: white;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 25px;
+            max-width: 800px;
+            width: 100%;
+            margin: 50px auto;
+        }
+
+        .settings-header {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff0000; /* Changed to red */
+        }
+
+        .settings-list {
+            margin-top: 20px;
+        }
+
+        .settings-item {
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .settings-item:last-child {
+            border-bottom: none;
+        }
+
+        .settings-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .settings-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .settings-title {
+            font-weight: bold;
+        }
+
+        .settings-edit {
+            color: #ff0000; /* Changed to red */
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .settings-edit:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styles */
+        .chase-footer {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .chase-footer a {
+            color: #ff0000; /* Changed to red */
+            text-decoration: none;
+            margin: 0 10px;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .chase-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Unavailable Service Notice */
+        .unavailable-notice {
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            .header-nav {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 10px;
+            }
+
+            .header-nav a {
+                margin: 8px 0;
+                font-size: 18px; /* Slightly larger text for readability on small devices */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h2>Westpac</h2>
+        <nav class="header-nav">
+            <a href="Home.html">Account Overview</a>
+            <a href="transactionhistory.html">Transaction History</a>
+            <a href="Accountsettings.html">Account Settings</a>
+            <a href="billpay.html">Bill Pay</a>
+            <a href="transfer.html">Transfer Money</a>
+            <a href="statement.html">Statements & Documents</a>
+            <a href="Customerservice.html">Customer Service</a>
+            <a href="Signin.html">Sign Out</a>
+        </nav>
+    </header>
+
+    <!-- Account Settings Container -->
+    <div class="content">
+        <div class="settings-container">
+            <div class="settings-header">Account Settings</div>
+
+            <!-- Settings List -->
+            <div class="settings-list">
+
+                <!-- Settings Item -->
+                <div class="settings-item">
+                    <div class="settings-details">
+                        <span class="settings-title">Personal Information</span>
+                        <span class="settings-edit">Edit</span>
+                    </div>
+                    <div>
+                        <p class="mb-0">Update your name, address, and phone number.</p>
+                    </div>
+                </div>
+
+                <!-- Settings Item -->
+                <div class="settings-item">
+                    <div class="settings-details">
+                        <span class="settings-title">Security Settings</span>
+                        <span class="settings-edit">Edit</span>
+                    </div>
+                    <div>
+                        <p class="mb-0">Change your password and manage two-factor authentication.</p>
+                    </div>
+                </div>
+
+                <!-- Settings Item -->
+                <div class="settings-item">
+                    <div class="settings-details">
+                        <span class="settings-title">Account Preferences</span>
+                        <span class="settings-edit">Edit</span>
+                    </div>
+                    <div>
+                        <p class="mb-0">Manage your email notifications, alerts, and communication preferences.</p>
+                    </div>
+                </div>
+
+                <!-- Settings Item -->
+                <div class="settings-item">
+                    <div class="settings-details">
+                        <span class="settings-title">Linked Accounts</span>
+                        <span class="settings-edit">Edit</span>
+                    </div>
+                    <div>
+                        <p class="mb-0">View and manage your linked bank accounts and external accounts.</p>
+                    </div>
+                </div>
+
+                <!-- Settings Item -->
+                <div class="settings-item">
+                    <div class="settings-details">
+                        <span class="settings-title">Privacy Settings</span>
+                        <span class="settings-edit">Edit</span>
+                    </div>
+                    <div>
+                        <p class="mb-0">Control how your information is shared with third parties.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+            <!-- Unavailable Service Notice -->
+            <div class="unavailable-notice">
+                Service currently unavailable. Please contact customer service for assistance.
+            </div>
+        </div>
+
+    <!-- Chase Bank Footer -->
+    <footer class="chase-footer">
+        <p>
+            <a href="#">Privacy</a> | <a href="#">Security</a> | <a href="#">Terms of Use</a>
+        </p>
+        <p>© 2025 Westpac Bank</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

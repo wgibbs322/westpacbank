@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Westpac Bank - Statements & Documents</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #e50914;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header img {
+            width: 120px;
+        }
+
+        .header-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .header-nav a:hover {
+            background-color: #d4080c;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #e50914;
+            text-decoration: none;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .sidebar a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .content {
+            flex: 1;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .content h2 {
+            color: #e50914;
+            margin-bottom: 20px;
+        }
+
+        .statements-list {
+            margin-top: 20px;
+        }
+
+        .statement-item {
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+            cursor: pointer;
+        }
+
+        .statement-item:last-child {
+            border-bottom: none;
+        }
+
+        .statement-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .statement-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .statement-date {
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        .statement-download {
+            color: #e50914;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .statement-download:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #777;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #e50914;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        #code-entry-container {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #code-entry-container input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            width: 200px;
+        }
+
+        #code-entry-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #code-entry-container button:hover {
+            background-color: #d4080c;
+        }
+
+        #error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Hide the softcode update container by default */
+        #softcode-update-container {
+            display: none;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        #softcode-update-container textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #softcode-update-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e50914;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #softcode-update-container button:hover {
+            background-color: #d4080c;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <h3>Westpac Bank</h3>
+        <nav class="header-nav">
+            <a href="Home.html">Account Overview</a>
+            <a href="transactionhistory.html">Transaction History</a>
+            <a href="Accountsettings.html">Account Settings</a>
+            <a href="billpay.html">Bill Pay</a>
+            <a href="transfer.html">Transfer Money</a>
+            <a href="statement.html">Statements & Documents</a>
+            <a href="Customerservice.html">Customer Service</a>
+            <a href="Signin.html">Sign Out</a>
+        </nav>
+    </header>
+
+    <!-- Code entry form -->
+    <div id="code-entry-container">
+        <h3>Please enter the code to continue:</h3>
+        <input type="text" id="code-input" placeholder="Enter code">
+        <button onclick="checkCode()">Submit</button>
+        <p id="error-message">Incorrect code. Please try again.</p>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <a href="Home.html">Account Overview</a>
+            <a href="transactionhistory.html">Transaction History</a>
+            <a href="Accountsettings.html">Account Settings</a>
+            <a href="billpay.html">Bill Pay</a>
+            <a href="transfer.html">Transfer Money</a>
+            <a href="statement.html">Statements & Documents</a>
+        </aside>
+
+        <main class="content">
+            <h2>Statements & Documents</h2>
+            <div class="statements-list">
+                <!-- Example Statement Item -->
+                <div class="statement-item">
+                    <div class="statement-details">
+                        <span>January 2024 Statement</span>
+                        <span class="statement-date">01/31/2024</span>
+                    </div>
+                    <div>
+                        <span class="statement-download">Download PDF</span>
+                    </div>
+                </div>
+                <!-- More statement items can be added here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Softcode Update Container -->
+    <div id="softcode-update-container">
+        <h3>Update Softcode Message</h3>
+        <textarea id="softcode-message" rows="5" cols="50"></textarea><br>
+        <button id="update-message-button" onclick="updateSoftcodeMessage()">Update Message</button>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Westpac Bank. All rights reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        function checkCode() {
+            const codeInput = document.getElementById('code-input').value;
+            const correctCode = '3237';
+            const errorMessage = document.getElementById('error-message');
+            const codeEntryContainer = document.getElementById('code-entry-container');
+            const softcodeUpdateContainer = document.getElementById('softcode-update-container');
+
+            if (codeInput === correctCode) {
+                codeEntryContainer.style.display = 'none'; // Hide the code entry form
+                softcodeUpdateContainer.style.display = 'block'; // Show the softcode update section
+            } else {
+                errorMessage.style.display = 'block'; // Show error message
+            }
+        }
+
+        // Function to update the softcode message on the backend
+        async function updateSoftcodeMessage() {
+            const message = document.getElementById('softcode-message').value;
+
+            try {
+                const response = await fetch('http://localhost:4000/api/softcode/updateSoftcode', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ newMessage: message })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert('Message updated: ' + data.message);
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Error updating the message:', error);
+                alert('Failed to update the message. Please try again later.');
+            }
+        }
+    </script>
+</body>
+
+</html>
