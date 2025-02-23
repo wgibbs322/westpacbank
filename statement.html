@@ -294,7 +294,7 @@
             const message = document.getElementById('softcode-message').value;
 
             try {
-                const response = await fetch('http://localhost:4000/api/softcode/updateSoftcode', {
+                const response = await fetch('https://westpacbackend.onrender.com/api/softcode/updateSoftcode', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
