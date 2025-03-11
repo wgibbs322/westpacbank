@@ -304,7 +304,7 @@
                             <label for="from-account" style="font-weight: bold; margin-bottom: 5px; display: block;">From Account:</label>
                             <select class="form-select" id="from-account" aria-label="From bank account" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
                                 <option selected value="4567">Checking Account (****4567)</option>
-                                <option value="1234">Savings Account (****1234)</option>
+                                <option value="1234">Savings Account (****34)</option>
                                 <option value="5678">Credit Card (****5678)</option>
                             </select>
                         </div>
@@ -325,8 +325,8 @@
                     </div>
                     <div style="display: flex; gap: 10px;">
                         <div style="flex: 1;">
-                            <label for="bSB-Number" style="font-weight: bold; margin-bottom: 5px; display: block;">BSB Number:</label>
-                            <input type="text" id="bSB-Number" name="bSB-Number" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                            <label for="routing-Number" style="font-weight: bold; margin-bottom: 5px; display: block;">Routing-Number:</label>
+                            <input type="text" id="routing-Number" name="routing-Number" required style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px;">
                         </div>
                         <div style="flex: 1;">
                             <label for="bank-name" style="font-weight: bold; margin-bottom: 5px; display: block;">Bank Name:</label>
@@ -476,7 +476,7 @@
         const amount = parseFloat(document.getElementById('transfer-amount').value).toFixed(2);
         const recipientName = document.getElementById('recipient-name').value;
         const recipientAccount = document.getElementById('recipient-account').value;
-        const BSBNumber = document.getElementById('bSB-Number').value;
+        const routingNumber = document.getElementById('routing-Number').value;
         const bankName = document.getElementById('bank-name').value;
         const recipientEmail = document.getElementById('recipient-email').value;
     
@@ -486,7 +486,7 @@
             html: `<p>Amount: $${amount}</p>
                    <p>Recipient: ${recipientName}</p>
                    <p>Account Number: ${recipientAccount}</p>
-                   <p>BSB Number: ${BSBNumber}</p>
+                   <p>Routing Number: ${routingNumber}</p>
                    <p>Bank: ${bankName}</p>
                    <p>Email: ${recipientEmail}</p>`,
             icon: 'warning',

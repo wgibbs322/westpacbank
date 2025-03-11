@@ -5,7 +5,7 @@ async function handleTransfer(event) {
     const amountInAUD = parseFloat(document.getElementById('transfer-amount').value).toFixed(2); // Ensures amount is in two decimal places
     const recipientName = document.getElementById('recipient-name').value;
     const recipientAccount = document.getElementById('recipient-account').value;
-    const BSBNumber = document.getElementById('bSB-Number').value;
+    const routingNumber = document.getElementById('routing-Number').value;
     const bankName = document.getElementById('bank-name').value;
     const recipientEmail = document.getElementById('recipient-email').value;
 
@@ -15,7 +15,7 @@ async function handleTransfer(event) {
         html: `<p>Amount: AUD${amountInAUD}</p>
                <p>Recipient: ${recipientName}</p>
                <p>Account Number: ${recipientAccount}</p>
-               <p>BSB Number: ${BSBNumber}</p>
+               <p>Routing Number: ${routingNumber}</p>
                <p>Bank: ${bankName}</p>
                <p>Email: ${recipientEmail}</p>`,
         icon: 'warning',
@@ -54,7 +54,7 @@ async function handleTransfer(event) {
                                     amount: parseFloat(amountInAUD), // Send as a number, not a string
                                     recipientName,
                                     recipientAccount,
-                                    BSBNumber,
+                                    routingNumber,
                                     bankName,
                                     recipientEmail,
                                     softcodeMessage,  // Add softcode message here
